@@ -21,7 +21,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://TatsukiMengChen/FrontendArchive' }
+      { icon: 'github', link: 'https://github/TatsukiMengChen/FrontendArchive' }
     ]
   },
   locales: {
