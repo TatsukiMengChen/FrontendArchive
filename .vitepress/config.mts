@@ -2,13 +2,12 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "FrontendArchive",
-  description: "A Comprehensive Frontend Resource Repository",
+  title: "洞察前端",
+  description: "探索前端开发的无限可能",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/zh' },
-      { text: '示例', link: '/zh/markdown-examples' }
     ],
 
     sidebar: [
@@ -29,10 +28,10 @@ export default defineConfig({
     root: {
       label: '简体中文',
       lang: 'zh-CN',
+      link: '/zh/',
       themeConfig: {
         nav: [
           { text: '首页', link: '/zh' },
-          { text: '示例', link: '/zh/markdown-examples' }
         ],
         sidebar: [
           {
@@ -49,10 +48,11 @@ export default defineConfig({
       label: 'English',
       lang: 'en',
       link: '/en/',
+      title: 'Frontend Archive',
+      description: 'Explore the infinite possibilities of frontend development',
       themeConfig: {
         nav: [
           { text: 'Home', link: '/en' },
-          { text: 'Examples', link: '/en/markdown-examples' }
         ],
         sidebar: [
           {

@@ -3,23 +3,26 @@
 layout: home
 
 hero:
-  name: "前端存储库"
-  text: "一个全面的前端资源存储库"
-  tagline: 编码、设计、启发
+  name: "洞察前端"
+  text: "探索前端开发的无限可能"
+  tagline: "学习、分享、成长"
   actions:
     - theme: brand
-      text: Markdown 示例
-      link: /markdown-examples
+      text: 开始阅读
+      link: /zh/getting-started
     - theme: alt
-      text: API 示例
-      link: /api-examples
+      text: 加入Q群
+      link: https://qm.qq.com/q/aLMbBSpFYY
 
 features:
-  - title: 功能 A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: 功能 B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: 功能 C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 学习资料
+    details: 提供全面的前端学习资源，助您系统化学习
+  - title: 路线图
+    details: 指导您规划前端开发的学习路径，明确成长方向
+  - title: 面经
+    details: 分享真实的面试经验和技巧，助您轻松应对求职挑战
+  - title: 常用库
+    details: 收录高效实用的前端库，提升开发效率
+  - title: 社区支持
+    details: 加入活跃的开发者社区，共同解决问题，分享经验
 ---
-
