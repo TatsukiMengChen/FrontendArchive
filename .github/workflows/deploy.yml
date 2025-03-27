@@ -16,7 +16,7 @@ jobs:
 
     # 设置 SSH 密钥
     - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.8.1
+      uses: webfactory/ssh-agent@v0.9.1
       with:
         ssh-private-key: ${{ secrets.PRIVATE_KEY }}
 
