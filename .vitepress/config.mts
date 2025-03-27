@@ -12,13 +12,14 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: '示例',
+        text: '学习路线',
         items: [
-          { text: 'Markdown 示例', link: '/zh/markdown-examples' },
-          { text: '运行时 API 示例', link: '/zh/api-examples' }
+          { text: '总览', link: '/zh/roadMap' }
         ]
       }
     ],
+
+    outline: [2,3],
 
     socialLinks: [
       { icon: 'github', link: 'https://github/TatsukiMengChen/FrontendArchive' }
@@ -33,15 +34,6 @@ export default defineConfig({
         nav: [
           { text: '首页', link: '/zh' },
         ],
-        sidebar: [
-          {
-            text: '示例',
-            items: [
-              { text: 'Markdown 示例', link: '/zh/markdown-examples' },
-              { text: '运行时 API 示例', link: '/zh/api-examples' }
-            ]
-          }
-        ]
       }
     },
     en: {

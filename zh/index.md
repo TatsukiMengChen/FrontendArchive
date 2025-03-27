@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /zh/getting-started
+      link: /zh/roadMap
     - theme: alt
       text: 加入Q群
       link: https://qm.qq.com/q/aLMbBSpFYY
