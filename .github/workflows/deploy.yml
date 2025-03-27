@@ -1,41 +1,34 @@
-# deploy.yml
-name: 部署到服务器
+name: Deploy to Server
+
 on:
   push:
     branches:
       - master
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      # 切换分支
-      - name: Checkout
-        uses: actions/checkout@v2
-      # 使用 node:22
-      - name: use Node.js 22
-        uses: actions/setup-node@v1
-        with:
-          node-version: 22
-      # npm install
-      - name: npm install
-        run: |
-          npm install
-        env:
-          CI: true
-      # build
-      - name: vitepress build
-        run: |
-          npm run docs:build
-        env:
-          CI: true
 
-      # Deploy
-      - name: Deploy
-        uses: easingthemes/ssh-deploy@v2.1.1
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          ARGS: "-avz --delete"
-          SOURCE: ".vitepress/dist/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.TARGET }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 检出代码
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 设置 SSH 密钥
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.8.1
+      with:
+        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+    # 同步文件到服务器
+    - name: Sync files to server
+      run: |
+        rsync -avz --delete \
+          -e "ssh -o StrictHostKeyChecking=no" \
+          ./ \
+          ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.TARGET }}
+
+    # 执行远程部署脚本
+    - name: Run deploy script
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "bash ${{ secrets.TARGET }}deploy.sh"
