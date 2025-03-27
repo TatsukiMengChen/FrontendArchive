@@ -14,27 +14,24 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 设置 SSH 密钥
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.9.1
+    # 设置 Node.js 环境
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
-        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+        node-version: '16' # 根据项目需求调整 Node.js 版本
 
-    # 同步文件到服务器
-    - name: Sync files to server
+    # 安装依赖
+    - name: Install dependencies
+      run: npm install
+
+    # 构建项目
+    - name: Build project
+      run: npm run docs:build
+
+    # 同步构建结果到目标服务器
+    - name: Sync build to server
       run: |
         rsync -avz --delete \
-          --exclude '.git' \
           -e "ssh -o StrictHostKeyChecking=no" \
-          ./ \
+          .vitepress/dist/ \
           ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.TARGET }}
-
-    # 确保 deploy.sh 可执行
-    - name: Ensure deploy.sh is executable
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chmod +x ${${{ secrets.TARGET }}deploy.sh}"
-
-    # 执行远程部署脚本
-    - name: Run deploy script
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "bash ${${{ secrets.TARGET }}deploy.sh}"
