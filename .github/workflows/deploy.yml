@@ -32,7 +32,7 @@ jobs:
     # 确保 deploy.sh 可执行
     - name: Ensure deploy.sh is executable
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "echo 'Running chmod +x on ${{ secrets.TARGET }}deploy.sh' && chmod +x ${{ secrets.TARGET }}deploy.sh && echo 'chmod +x ${{ secrets.TARGET }}deploy.sh executed'"
+        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "logger 'Preparing to make deploy.sh executable'; echo 'Running chmod +x on ${{ secrets.TARGET }}deploy.sh' | logger && chmod +x ${{ secrets.TARGET }}deploy.sh && echo 'chmod +x ${{ secrets.TARGET }}deploy.sh executed' | logger"
 
     # 执行远程部署脚本
     - name: Run deploy script
