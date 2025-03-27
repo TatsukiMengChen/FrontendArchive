@@ -24,6 +24,7 @@ jobs:
     - name: Sync files to server
       run: |
         rsync -avz --delete \
+          --exclude '.git' \
           -e "ssh -o StrictHostKeyChecking=no" \
           ./ \
           ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.TARGET }}
