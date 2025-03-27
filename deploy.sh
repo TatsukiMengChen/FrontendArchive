@@ -7,7 +7,7 @@ export PATH=/home/mengchen/.nvm/versions/node/v22.12.0/bin:$PATH
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 PROJECT_DIR="$SCRIPT_DIR"
 BUILD_DIR="$PROJECT_DIR/.vitepress/dist" # 构建输出目录
-TARGET_DIR="/opt/1panel/apps/openresty/openresty/www/sites/fe.mimeng.top"
+TARGET_DIR="/opt/1panel/apps/openresty/openresty/www/sites/fe.mimeng.top/index"
 LOG_FILE="$PROJECT_DIR/deploy.log"
 
 # 写入日志函数
