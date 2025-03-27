@@ -29,7 +29,12 @@ jobs:
           ./ \
           ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.TARGET }}
 
+    # 确保 deploy.sh 可执行
+    - name: Ensure deploy.sh is executable
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chmod +x ${${{ secrets.TARGET }}deploy.sh}"
+
     # 执行远程部署脚本
     - name: Run deploy script
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "bash ${{ secrets.TARGET }}deploy.sh"
+        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "bash ${${{ secrets.TARGET }}deploy.sh}"
