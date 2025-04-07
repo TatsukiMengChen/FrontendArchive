@@ -17,6 +17,10 @@ const zhConfig = {
         items: [
           { text: '总览', link: '/zh/skills/' },
         ]
+      },
+      {
+        text: "实用工具",
+        link: '/zh/tools/'
       }
     ],
     outline: [2, 3] as [number, number], // 修复类型错误
