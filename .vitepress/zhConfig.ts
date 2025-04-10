@@ -25,7 +25,7 @@ const zhConfig = {
     ],
     outline: [2, 3] as [number, number], // 修复类型错误
     socialLinks: [
-      { icon: 'github', link: 'https://github/TatsukiMengChen/FrontendArchive' }
+      { icon: 'github', link: 'https://github.com/TatsukiMengChen/FrontendArchive' }
     ]
   },
   locales: {
