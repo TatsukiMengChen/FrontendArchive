@@ -25,7 +25,7 @@ const zhConfig = {
     socialLinks: [
       {
         icon: "github",
-        link: "https://github/TatsukiMengChen/FrontendArchive",
+        link: "https://github.com/TatsukiMengChen/FrontendArchive",
       },
     ],
   },
